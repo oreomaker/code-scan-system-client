@@ -2,11 +2,13 @@ import localeMessageBox from '@/components/message-box/locale/zh-CN';
 import localeLogin from '@/views/login/locale/zh-CN';
 
 import localeWorkplace from '@/views/dashboard/workplace/locale/zh-CN';
+import localeEstimate from '@/views/dashboard/estimate/locale/zh-CN';
+import localeTrace from '@/views/dashboard/trace/locale/zh-CN';
 
 import localeSettings from './zh-CN/settings';
 
 export default {
-  'menu.dashboard': '仪表盘',
+  'menu.dashboard': '工作台',
   'menu.arcoWebsite': 'Arco Design',
   'menu.faq': '常见问题',
   'navbar.docs': '文档中心',
@@ -15,4 +17,6 @@ export default {
   ...localeMessageBox,
   ...localeLogin,
   ...localeWorkplace,
+  ...localeEstimate,
+  ...localeTrace,
 };
