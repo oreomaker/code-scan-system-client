@@ -5,7 +5,7 @@
       <a-space direction="vertical" :size="16">
         <a-card class="general-card">
           <template #title>
-            {{ $t('groupForm.title.video') }}
+            {{ $t('dashboard.title.document') }}
           </template>
           <a-row :gutter="80">
             <a-col :span="8">
@@ -143,96 +143,8 @@
             </a-col>
           </a-row>
         </a-card>
-        <a-card class="general-card">
-          <template #title>
-            {{ $t('groupForm.title.audio') }}
-          </template>
-          <a-row :gutter="80">
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.audio.mode')"
-                field="audio.mode"
-              >
-                <a-select :placeholder="$t('groupForm.placeholder.audio.mode')">
-                  <a-option value="custom">自定义</a-option>
-                  <a-option value="mode1">模式1</a-option>
-                  <a-option value="mode2">模式2</a-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.audio.acquisition.channels')"
-                field="audio.acquisition.channels"
-              >
-                <a-select
-                  :placeholder="
-                    $t('groupForm.placeholder.audio.acquisition.channels')
-                  "
-                >
-                  <a-option value="1">1</a-option>
-                  <a-option value="2">2</a-option>
-                  <a-option value="3">3</a-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.audio.encoding.channels')"
-                field="audio.encoding.channels"
-              >
-                <a-input
-                  :placeholder="
-                    $t('groupForm.placeholder.audio.encoding.channels')
-                  "
-                >
-                  <template #append> bps </template>
-                </a-input>
-              </a-form-item>
-            </a-col>
-          </a-row>
-          <a-row :gutter="80">
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.audio.encoding.rate')"
-                field="audio.encoding.rate"
-              >
-                <a-input
-                  :placeholder="$t('groupForm.placeholder.audio.encoding.rate')"
-                >
-                  <template #append> bps </template>
-                </a-input>
-              </a-form-item>
-            </a-col>
-
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.audio.encoding.profile')"
-                field="audio.encoding.profile"
-              >
-                <a-input
-                  :placeholder="
-                    $t('groupForm.placeholder.audio.encoding.profile')
-                  "
-                >
-                  <template #append> fps </template>
-                </a-input>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </a-card>
-        <a-card class="general-card" :bordered="false">
-          <template #title>
-            {{ $t('groupForm.title.description') }}
-          </template>
-          <a-form-item
-            :label="$t('groupForm.form.label.parameterDescription')"
-            field="audio.approvers"
-          >
-            <a-textarea
-              :placeholder="$t('groupForm.placeholder.description')"
-            />
-          </a-form-item>
+        <a-card class="general-card" :bordered="true" style="padding-top: 20px">
+          <a-upload draggable :action="uploadUrl" />
         </a-card>
       </a-space>
       <div class="actions">
@@ -257,6 +169,7 @@
   const formData = ref({});
   const formRef = ref<FormInstance>();
   const { loading, setLoading } = useLoading();
+  const uploadUrl = ref('/estimate/upload');
   const onSubmitClick = async () => {
     const res = await formRef.value?.validate();
     if (!res) {

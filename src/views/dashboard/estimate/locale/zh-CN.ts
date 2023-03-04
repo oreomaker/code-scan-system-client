@@ -1,6 +1,6 @@
 export default {
   'menu.dashboard.estimate': '成本估计',
-  'menu.form.group': '分组表单',
+  'dashboard.title.document': '文档信息',
   'groupForm.title.video': '视频参数',
   'groupForm.title.audio': '音频参数',
   'groupForm.title.description': '填写说明',

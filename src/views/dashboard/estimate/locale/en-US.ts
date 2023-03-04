@@ -1,6 +1,6 @@
 export default {
   'menu.dashboard.estimate': 'Cost Estimate',
-  'menu.form.group': 'Group Form',
+  'dashboard.title.document': 'Document Information',
   'groupForm.title.video': 'Video Parameters',
   'groupForm.title.audio': 'Audio Parameters',
   'groupForm.title.description': 'Enter Description',
