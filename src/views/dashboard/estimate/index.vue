@@ -66,6 +66,7 @@
       </a-space>
       <!-- TODO: for debug -->
       {{ form }}
+      {{ costEstimate }}
       <div class="actions">
         <a-space>
           <a-button>
@@ -92,8 +93,13 @@
     factor1: '',
     factor2: '',
   });
-  const handleSubmit = async (value: Record<string, any>) => {
-    const res = await estimate(form.value as EstimateData);
+  const costEstimate = ref(0);
+  const handleSubmit = async () => {
+    setLoading(true);
+    const res = await estimate(form.value);
+    // eslint-disable-next-line no-console
+    console.log(res);
+    costEstimate.value = res?.data.cost;
     if (!res) {
       setLoading(true);
     }
