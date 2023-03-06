@@ -1,6 +1,10 @@
 export default {
   'menu.dashboard.estimate': '成本估计',
   'dashboard.title.document': '文档信息',
+  'dashboard.form.label.location': '开发地点',
+  'dashboard.form.label.factor1': '回归因子1',
+  'dashboard.form.label.factor2': '回归因子2',
+
   'groupForm.title.video': '视频参数',
   'groupForm.title.audio': '音频参数',
   'groupForm.title.description': '填写说明',

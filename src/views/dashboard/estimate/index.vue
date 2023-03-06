@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <Breadcrumb :items="['menu.dashboard', 'menu.dashboard.estimate']" />
-    <a-form ref="formRef" layout="vertical" :model="formData">
+    <a-form
+      ref="formRef"
+      layout="vertical"
+      :model="form"
+      @submit="handleSubmit"
+    >
       <a-space direction="vertical" :size="16">
         <a-card class="general-card">
           <template #title>
@@ -10,25 +15,27 @@
           <a-row :gutter="80">
             <a-col :span="8">
               <a-form-item
-                :label="$t('groupForm.form.label.video.mode')"
-                field="video.mode"
+                :label="$t('dashboard.form.label.location')"
+                field="location"
               >
-                <a-select :placeholder="$t('groupForm.placeholder.video.mode')">
-                  <a-option value="custom">自定义</a-option>
-                  <a-option value="mode1">模式1</a-option>
-                  <a-option value="mode2">模式2</a-option>
+                <a-select
+                  v-model="form.location"
+                  :placeholder="$t('groupForm.placeholder.video.mode')"
+                >
+                  <a-option value="Beijing">北京</a-option>
+                  <a-option value="Shanghai">上海</a-option>
+                  <a-option value="Shenzhen">深圳</a-option>
                 </a-select>
               </a-form-item>
             </a-col>
             <a-col :span="8">
               <a-form-item
                 :label="$t('groupForm.form.label.video.acquisition.resolution')"
-                field="video.acquisition.resolution"
+                field="factor1"
               >
                 <a-select
-                  :placeholder="
-                    $t('groupForm.placeholder.video.acquisition.resolution')
-                  "
+                  v-model="form.factor1"
+                  :placeholder="$t('dashboard.form.label.factor1')"
                 >
                   <a-option value="resolution1">分辨率1</a-option>
                   <a-option value="resolution2">分辨率2</a-option>
@@ -38,106 +45,16 @@
             </a-col>
             <a-col :span="8">
               <a-form-item
-                :label="$t('groupForm.form.label.video.acquisition.frameRate')"
-                field="video.acquisition.frameRate"
+                :label="$t('dashboard.form.label.factor2')"
+                field="factor2"
               >
                 <a-input
+                  v-model="form.factor2"
                   :placeholder="
                     $t('groupForm.placeholder.video.acquisition.frameRate')
                   "
                 >
-                  <template #append> fps </template>
-                </a-input>
-              </a-form-item>
-            </a-col>
-          </a-row>
-          <a-row :gutter="80">
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.video.encoding.resolution')"
-                field="video.encoding.resolution"
-              >
-                <a-select
-                  :placeholder="
-                    $t('groupForm.placeholder.video.encoding.resolution')
-                  "
-                >
-                  <a-option value="resolution1">分辨率1</a-option>
-                  <a-option value="resolution2">分辨率2</a-option>
-                  <a-option value="resolution3">分辨率3</a-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.video.encoding.rate.min')"
-                field="video.encoding.rate.min"
-              >
-                <a-input
-                  :placeholder="
-                    $t('groupForm.placeholder.video.encoding.rate.min')
-                  "
-                  add-after="bps"
-                >
-                  <template #append> bps </template>
-                </a-input>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.video.encoding.rate.max')"
-                field="video.encoding.rate.max"
-              >
-                <a-input
-                  :placeholder="
-                    $t('groupForm.placeholder.video.encoding.rate.max')
-                  "
-                >
-                  <template #append> bps </template>
-                </a-input>
-              </a-form-item>
-            </a-col>
-          </a-row>
-          <a-row :gutter="80">
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.video.encoding.rate.default')"
-                field="video.encoding.rate.default"
-              >
-                <a-input
-                  :placeholder="
-                    $t('groupForm.placeholder.video.encoding.rate.default')
-                  "
-                >
-                  <template #append> bps </template>
-                </a-input>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.video.encoding.frameRate')"
-                field="video.encoding.frameRate"
-              >
-                <a-input
-                  :placeholder="
-                    $t('groupForm.placeholder.video.encoding.frameRate')
-                  "
-                >
-                  <template #append> fps </template>
-                </a-input>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                :label="$t('groupForm.form.label.video.encoding.profile')"
-                field="video.encoding.profile"
-              >
-                <a-input
-                  :placeholder="
-                    $t('groupForm.placeholder.video.encoding.profile')
-                  "
-                >
-                  <template #append> bps </template>
+                  <template #append> ms </template>
                 </a-input>
               </a-form-item>
             </a-col>
@@ -147,12 +64,14 @@
           <a-upload draggable :action="uploadUrl" />
         </a-card>
       </a-space>
+      <!-- TODO: for debug -->
+      {{ form }}
       <div class="actions">
         <a-space>
           <a-button>
             {{ $t('groupForm.reset') }}
           </a-button>
-          <a-button type="primary" :loading="loading" @click="onSubmitClick">
+          <a-button type="primary" :loading="loading" html-type="submit">
             {{ $t('groupForm.submit') }}
           </a-button>
         </a-space>
@@ -163,15 +82,18 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { FormInstance } from '@arco-design/web-vue/es/form';
   import useLoading from '@/hooks/loading';
+  import { estimate, EstimateData } from '@/api/estimate';
 
-  const formData = ref({});
-  const formRef = ref<FormInstance>();
   const { loading, setLoading } = useLoading();
   const uploadUrl = ref('/estimate/upload');
-  const onSubmitClick = async () => {
-    const res = await formRef.value?.validate();
+  const form = ref<EstimateData>({
+    location: '',
+    factor1: '',
+    factor2: '',
+  });
+  const handleSubmit = async (value: Record<string, any>) => {
+    const res = await estimate(form.value as EstimateData);
     if (!res) {
       setLoading(true);
     }

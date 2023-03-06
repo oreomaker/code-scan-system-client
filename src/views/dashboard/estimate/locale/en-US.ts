@@ -1,6 +1,10 @@
 export default {
   'menu.dashboard.estimate': 'Cost Estimate',
   'dashboard.title.document': 'Document Information',
+  'dashboard.form.label.location': 'Development Location',
+  'dashboard.form.label.factor1': 'Factor 1',
+  'dashboard.form.label.factor2': 'Factor 2',
+
   'groupForm.title.video': 'Video Parameters',
   'groupForm.title.audio': 'Audio Parameters',
   'groupForm.title.description': 'Enter Description',
