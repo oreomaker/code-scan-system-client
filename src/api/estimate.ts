@@ -12,3 +12,6 @@ export interface EstimateRes {
 export function estimate(data: EstimateData) {
   return axios.post<EstimateRes>('/api/estimate', data);
 }
+export function getTableData() {
+  return axios.get('/api/table');
+}
