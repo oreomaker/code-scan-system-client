@@ -1,17 +1,22 @@
 <template>
   <div class="container">
     <Breadcrumb :items="['menu.dashboard', 'menu.dashboard.trace']" />
-    <a-card class="general-card" :bordered="false">
-      <template #title>
-        {{ $t('groupForm.title.description') }}
-      </template>
-      <a-form-item
-        :label="$t('groupForm.form.label.parameterDescription')"
-        field="audio.approvers"
+    <a-space direction="vertical" :size="16" fill>
+      <a-card
+        title="Upload Code Package"
+        class="general-card"
+        :bordered="false"
       >
-        <a-textarea :placeholder="$t('groupForm.placeholder.description')" />
-      </a-form-item>
-    </a-card>
+        Upload your code package to trace the source of other people's code.
+        <a-upload
+          style="width: 680px; margin-top: 20px"
+          draggable
+          action="/trace/upload"
+        />
+      </a-card>
+      <ContentTypeDistribution />
+    </a-space>
+    <!-- <ContentPublishingSource /> -->
     <div class="actions">
       <a-space>
         <a-button>
@@ -29,8 +34,8 @@
   import { ref } from 'vue';
   import { FormInstance } from '@arco-design/web-vue/es/form';
   import useLoading from '@/hooks/loading';
+  import ContentTypeDistribution from './components/content-type-distribution.vue';
 
-  const formData = ref({});
   const formRef = ref<FormInstance>();
   const { loading, setLoading } = useLoading();
   const onSubmitClick = async () => {
@@ -65,5 +70,21 @@
     padding: 14px 20px 14px 0;
     text-align: right;
     background: var(--color-bg-2);
+  }
+
+  .general-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    background-color: var(--color-bg-2);
+
+    :deep(.arco-form) {
+      .arco-form-item {
+        &:last-child {
+          margin-top: 20px;
+        }
+      }
+    }
   }
 </style>
