@@ -5,6 +5,13 @@ export default {
   'dashboard.form.label.factor1': 'Factor 1',
   'dashboard.form.label.factor2': 'Factor 2',
 
+  'stepForm.step.document': 'Document Upload',
+  'stepForm.step.document.info': 'Upload the requirement specification',
+  'stepForm.step.review': 'Review Information',
+  'stepForm.step.review.info': 'Review the uploaded data',
+  'stepForm.step.estimate': 'Estimate Cost',
+  'stepForm.step.estimate.info': 'Estimate the cost of the project',
+
   'menu.form.step': 'Step Form',
   'stepForm.step.title': 'Create Channel Forms',
   'stepForm.step.title.baseInfo': 'Select Basic Information',

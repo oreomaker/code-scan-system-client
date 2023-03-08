@@ -8,7 +8,7 @@ export default {
   'stepForm.step.document': '文档上传',
   'stepForm.step.document.info': '上传需求规格说明书',
   'stepForm.step.review': '校验信息',
-  'stepForm.step.review.info': '可通过更改excel文件更新数据',
+  'stepForm.step.review.info': '检查excel文件，更新数据',
   'stepForm.step.estimate': '成本估计',
   'stepForm.step.estimate.info': '上传文件估计成本',
 

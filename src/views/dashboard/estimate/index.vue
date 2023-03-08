@@ -6,8 +6,8 @@
         <div class="wrapper">
           <a-steps
             v-model:current="step"
+            label-placement="vertical"
             style="width: 580px"
-            line-less
             class="steps"
           >
             <a-step :description="$t('stepForm.step.document.info')">
@@ -21,9 +21,9 @@
             </a-step>
           </a-steps>
           <keep-alive>
-            <BaseInfo v-if="step === 1" @change-step="changeStep" />
-            <ChannelInfo v-else-if="step === 2" @change-step="changeStep" />
-            <Success v-else-if="step === 3" @change-step="changeStep" />
+            <DocUpload v-if="step === 1" @change-step="changeStep" />
+            <DataReview v-else-if="step === 2" @change-step="changeStep" />
+            <EstResult v-else-if="step === 3" @change-step="changeStep" />
           </keep-alive>
         </div>
       </a-card>
@@ -40,9 +40,9 @@
     ChannelInfoModel,
     UnitChannelModel,
   } from '@/api/form';
-  import BaseInfo from './components/base-info.vue';
-  import ChannelInfo from './components/channel-info.vue';
-  import Success from './components/success.vue';
+  import DocUpload from './components/doc-upload.vue';
+  import DataReview from './components/data-review.vue';
+  import EstResult from './components/est-result.vue';
 
   const { loading, setLoading } = useLoading(false);
   const step = ref(1);
@@ -112,6 +112,6 @@
   }
 
   .steps {
-    margin-bottom: 76px;
+    margin-bottom: 70px;
   }
 </style>
