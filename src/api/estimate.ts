@@ -9,8 +9,8 @@ export interface EstimateData {
 export interface EstimateRes {
   cost: number;
 }
-export function estimate(data: EstimateData) {
-  return axios.post<EstimateRes>('/api/estimate', data);
+export function estimate() {
+  return axios.get('/api/estimate');
 }
 export function getTableData() {
   return axios.get('/api/table');

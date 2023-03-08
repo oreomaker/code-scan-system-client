@@ -1,35 +1,65 @@
 <template>
-  <div class="success-wrap">
-    <a-result
-      status="success"
-      :title="$t('stepForm.success.title')"
-      :subtitle="$t('stepForm.success.subTitle')"
-    />
-    <a-space :size="16">
-      <a-button key="view" type="primary">
-        {{ $t('stepForm.button.view') }}
-      </a-button>
-      <a-button key="again" type="secondary" @click="oneMore">
+  <a-spin class="success-wrap" :loading="loading">
+    <a-space direction="vertical" size="large" fill>
+      <a-descriptions :data="data" title="估计结果" :column="3">
+        <a-descriptions-item
+          v-for="item of data"
+          :key="item.label"
+          :label="item.label"
+        >
+          <a-tag>{{ item.value }}</a-tag>
+        </a-descriptions-item>
+      </a-descriptions>
+    </a-space>
+    <a-space :size="16" style="margin-top: 40px">
+      <a-button key="agian" type="primary" @click="oneMore">
         {{ $t('stepForm.button.again') }}
       </a-button>
     </a-space>
-    <div class="details-wrapper">
-      <a-typography-title :heading="6" style="margin-top: 0">
-        {{ $t('stepForm.form.description.title') }}
-      </a-typography-title>
-      <a-typography-paragraph style="margin-bottom: 0">
-        {{ $t('stepForm.form.description.text') }}
-        <a-link href="link">{{ $t('stepForm.button.view') }}</a-link>
-      </a-typography-paragraph>
-    </div>
-  </div>
+  </a-spin>
 </template>
 
 <script lang="ts" setup>
+  import { ref } from 'vue';
+  import { estimate } from '@/api/estimate';
+  import useLoading from '@/hooks/loading';
+
   const emits = defineEmits(['changeStep']);
+  const { loading, setLoading } = useLoading(true);
   const oneMore = () => {
     emits('changeStep', 1);
   };
+  const data = ref([
+    {
+      label: 'Name',
+      value: '',
+    },
+    {
+      label: 'Mobile',
+      value: '',
+    },
+    {
+      label: 'Residence',
+      value: '',
+    },
+    {
+      label: 'Hometown',
+      value: '',
+    },
+    {
+      label: 'Address',
+      value: '',
+    },
+  ]);
+
+  const fetchData = async () => {
+    setLoading(true);
+    const res = await estimate();
+    data.value = res.data;
+    setLoading(false);
+  };
+
+  fetchData();
 </script>
 
 <style scoped lang="less">
@@ -39,13 +69,5 @@
 
   :deep(.arco-result) {
     padding-top: 0;
-  }
-
-  .details-wrapper {
-    width: 895px;
-    margin-top: 54px;
-    padding: 20px;
-    text-align: left;
-    background-color: var(--color-fill-2);
   }
 </style>
