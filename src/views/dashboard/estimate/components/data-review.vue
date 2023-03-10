@@ -10,7 +10,7 @@
             :label="$t('review.form.metadata.elf')"
             field="metaData.elfNum"
           >
-            <a-input> </a-input>
+            <a-input-number v-model="metaData.elfNum"> </a-input-number>
           </a-form-item>
         </a-col>
         <a-col :span="8">
@@ -18,7 +18,7 @@
             :label="$t('review.form.metadata.ilf')"
             field="metaData.ilfNum"
           >
-            <a-input> </a-input>
+            <a-input-number v-model="metaData.ilfNum"> </a-input-number>
           </a-form-item>
         </a-col>
         <a-col :span="8">
@@ -26,7 +26,7 @@
             :label="$t('review.form.metadata.funcPoint')"
             field="metaData.functionPoints"
           >
-            <a-input> </a-input>
+            <a-input-number v-model="metaData.functionPoints"> </a-input-number>
           </a-form-item>
         </a-col>
       </a-row>
@@ -37,12 +37,13 @@
             field="metaData.phase"
           >
             <a-select
+              v-model="metaData.phase"
               :placeholder="$t('review.form.metadata.phase.placeholder')"
             >
-              <a-option value="1">早期</a-option>
-              <a-option value="2">中期</a-option>
-              <a-option value="3">晚期</a-option>
-              <a-option value="4">交付后及运维</a-option>
+              <a-option :value="1">早期</a-option>
+              <a-option :value="2">中期</a-option>
+              <a-option :value="3">后期</a-option>
+              <a-option :value="4">交付后及运维</a-option>
             </a-select>
           </a-form-item>
         </a-col>
@@ -62,7 +63,7 @@
         :scroll="scroll"
         :pagination="false"
       />
-      <a-button type="text">下载数据</a-button>
+      <a-link href="download">下载数据</a-link>
     </div>
   </a-card>
   <a-card class="general-card" style="width: 100%">
@@ -87,7 +88,7 @@
   import { computed, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
   import useLoading from '@/hooks/loading';
-  import { getTableData, DocMetaData } from '@/api/estimate';
+  import { getDocumentMeta, getTableData, DocMetaData } from '@/api/estimate';
   import { FormInstance } from '@arco-design/web-vue/es/form';
 
   const emits = defineEmits(['changeStep']);
@@ -96,7 +97,7 @@
 
   const scroll = {
     x: '80%',
-    y: 500,
+    y: 300,
   };
 
   const columns = computed(() => {
@@ -130,8 +131,10 @@
 
   const fetchData = async () => {
     setLoading(true);
-    const { data } = await getTableData();
+    const data = await getTableData();
+    const meta = await getDocumentMeta();
     tableData.value = data.data;
+    metaData.value = meta.data;
     setLoading(false);
   };
 

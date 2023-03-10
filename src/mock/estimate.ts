@@ -9,15 +9,100 @@ setupMock({
     });
     // get table data
     Mock.mock(new RegExp('/api/table'), () => {
+      return successResponseWrap([
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+        {
+          function: '5.1 建设规模',
+          catagory: 'ILF',
+          reuse: '低',
+          modify: '新增',
+        },
+      ]);
+    });
+    // get doc meta
+    Mock.mock(new RegExp('/api/docmeta'), () => {
       return successResponseWrap({
-        data: [
-          {
-            function: '5.1 建设规模',
-            catagory: 'ILF',
-            reuse: '低',
-            modify: '新增',
-          },
-        ],
+        elfNum: 21,
+        ilfNum: 60,
+        functionPoints: 2415,
+        phase: 1,
       });
     });
     // estimate

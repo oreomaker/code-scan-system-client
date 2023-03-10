@@ -21,9 +21,12 @@ export interface DocData {
 export interface EstimateRes {
   cost: number;
 }
-export function estimate() {
-  return axios.get('/api/estimate');
+export function getDocumentMeta() {
+  return axios.get('/api/docmeta');
 }
 export function getTableData() {
   return axios.get('/api/table');
+}
+export function estimate() {
+  return axios.get('/api/estimate');
 }
