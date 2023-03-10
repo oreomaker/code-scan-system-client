@@ -1,10 +1,11 @@
 <template>
-  <a-card
-    class="general-card"
-    :title="$t('multiDAnalysis.card.title.contentTypeDistribution')"
-    :header-style="{ paddingBottom: 0 }"
-  >
-    <Chart style="width: 500px; height: 222px" :option="chartOption" />
+  <a-card class="general-card" :header-style="{ paddingBottom: 0 }">
+    <template #title>
+      {{ $t('multiDAnalysis.card.title.contentTypeDistribution') }}
+    </template>
+    <div class="wrapper">
+      <Chart style="width: 500px; height: 222px" :option="chartOption" />
+    </div>
   </a-card>
 </template>
 
@@ -100,4 +101,12 @@
   });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    background-color: var(--color-bg-2);
+  }
+</style>

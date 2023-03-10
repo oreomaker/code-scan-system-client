@@ -2,17 +2,16 @@
   <div class="container">
     <Breadcrumb :items="['menu.dashboard', 'menu.dashboard.trace']" />
     <a-space direction="vertical" :size="16" fill>
-      <a-card
-        title="Upload Code Package"
-        class="general-card"
-        :bordered="false"
-      >
+      <a-card class="general-card" :bordered="false">
+        <template #title> Upload Code Package </template>
         Upload your code package to trace the source of other people's code.
-        <a-upload
-          style="width: 680px; margin-top: 20px"
-          draggable
-          action="/trace/upload"
-        />
+        <div class="wrapper">
+          <a-upload
+            style="width: 680px; margin-top: 20px"
+            draggable
+            action="/trace/upload"
+          />
+        </div>
       </a-card>
       <ContentTypeDistribution />
     </a-space>
@@ -75,7 +74,6 @@
   .general-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding-top: 20px;
     background-color: var(--color-bg-2);
 
@@ -86,5 +84,13 @@
         }
       }
     }
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    background-color: var(--color-bg-2);
   }
 </style>
