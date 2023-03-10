@@ -1,133 +1,53 @@
 <template>
-  <a-card class="general-card">
+  <a-card class="general-card" style="width: 100%">
     <template #title>
       {{ $t('stepForm.title.documentMeta') }}
     </template>
-    <a-row :gutter="80">
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.mode')"
-          field="video.mode"
-        >
-          <a-select :placeholder="$t('groupForm.placeholder.video.mode')">
-            <a-option value="custom">自定义</a-option>
-            <a-option value="mode1">模式1</a-option>
-            <a-option value="mode2">模式2</a-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.acquisition.resolution')"
-          field="video.acquisition.resolution"
-        >
-          <a-select
-            :placeholder="
-              $t('groupForm.placeholder.video.acquisition.resolution')
-            "
+    <a-form ref="formRef" layout="vertical" :model="metaData">
+      <a-row :gutter="80">
+        <a-col :span="8">
+          <a-form-item
+            :label="$t('review.form.metadata.elf')"
+            field="metaData.elfNum"
           >
-            <a-option value="resolution1">分辨率1</a-option>
-            <a-option value="resolution2">分辨率2</a-option>
-            <a-option value="resolution3">分辨率3</a-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.acquisition.frameRate')"
-          field="video.acquisition.frameRate"
-        >
-          <a-input
-            :placeholder="
-              $t('groupForm.placeholder.video.acquisition.frameRate')
-            "
+            <a-input> </a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="8">
+          <a-form-item
+            :label="$t('review.form.metadata.ilf')"
+            field="metaData.ilfNum"
           >
-            <template #append> fps </template>
-          </a-input>
-        </a-form-item>
-      </a-col>
-    </a-row>
-    <a-row :gutter="80">
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.encoding.resolution')"
-          field="video.encoding.resolution"
-        >
-          <a-select
-            :placeholder="$t('groupForm.placeholder.video.encoding.resolution')"
+            <a-input> </a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="8">
+          <a-form-item
+            :label="$t('review.form.metadata.funcPoint')"
+            field="metaData.functionPoints"
           >
-            <a-option value="resolution1">分辨率1</a-option>
-            <a-option value="resolution2">分辨率2</a-option>
-            <a-option value="resolution3">分辨率3</a-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.encoding.rate.min')"
-          field="video.encoding.rate.min"
-        >
-          <a-input
-            :placeholder="$t('groupForm.placeholder.video.encoding.rate.min')"
-            add-after="bps"
+            <a-input> </a-input>
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row :gutter="80">
+        <a-col :span="8">
+          <a-form-item
+            :label="$t('review.form.metadata.phase')"
+            field="metaData.phase"
           >
-            <template #append> bps </template>
-          </a-input>
-        </a-form-item>
-      </a-col>
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.encoding.rate.max')"
-          field="video.encoding.rate.max"
-        >
-          <a-input
-            :placeholder="$t('groupForm.placeholder.video.encoding.rate.max')"
-          >
-            <template #append> bps </template>
-          </a-input>
-        </a-form-item>
-      </a-col>
-    </a-row>
-    <a-row :gutter="80">
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.encoding.rate.default')"
-          field="video.encoding.rate.default"
-        >
-          <a-input
-            :placeholder="
-              $t('groupForm.placeholder.video.encoding.rate.default')
-            "
-          >
-            <template #append> bps </template>
-          </a-input>
-        </a-form-item>
-      </a-col>
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.encoding.frameRate')"
-          field="video.encoding.frameRate"
-        >
-          <a-input
-            :placeholder="$t('groupForm.placeholder.video.encoding.frameRate')"
-          >
-            <template #append> fps </template>
-          </a-input>
-        </a-form-item>
-      </a-col>
-      <a-col :span="8">
-        <a-form-item
-          :label="$t('groupForm.form.label.video.encoding.profile')"
-          field="video.encoding.profile"
-        >
-          <a-input
-            :placeholder="$t('groupForm.placeholder.video.encoding.profile')"
-          >
-            <template #append> bps </template>
-          </a-input>
-        </a-form-item>
-      </a-col>
-    </a-row>
+            <a-select
+              :placeholder="$t('review.form.metadata.phase.placeholder')"
+            >
+              <a-option value="1">早期</a-option>
+              <a-option value="2">中期</a-option>
+              <a-option value="3">晚期</a-option>
+              <a-option value="4">交付后及运维</a-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
+      </a-row>
+    </a-form>
   </a-card>
   <a-card class="general-card">
     <template #title>
@@ -164,64 +84,48 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
+  import { useI18n } from 'vue-i18n';
   import useLoading from '@/hooks/loading';
-  import { getTableData } from '@/api/estimate';
+  import { getTableData, DocMetaData } from '@/api/estimate';
+  import { FormInstance } from '@arco-design/web-vue/es/form';
 
   const emits = defineEmits(['changeStep']);
   const { loading, setLoading } = useLoading(true);
+  const { t } = useI18n();
 
   const scroll = {
     x: '80%',
     y: 500,
   };
 
-  const columns = ref([
-    {
-      title: 'Function',
-      dataIndex: 'function',
-    },
-    {
-      title: 'Catagory',
-      dataIndex: 'catagory',
-    },
-    {
-      title: 'Reuse',
-      dataIndex: 'reuse',
-    },
-    {
-      title: 'Modify',
-      dataIndex: 'modify',
-    },
-  ]);
-  const formData = ref({
-    activityName: '',
-    channelType: '',
-    promotionTime: [],
-    promoteLink: 'https://arco.design',
+  const columns = computed(() => {
+    return [
+      {
+        title: t('review.docData.column.funcPoints'),
+        dataIndex: 'function',
+      },
+      {
+        title: t('review.docData.column.catagory'),
+        dataIndex: 'catagory',
+      },
+      {
+        title: t('review.docData.column.reuse'),
+        dataIndex: 'reuse',
+      },
+      {
+        title: t('review.docData.column.modify'),
+        dataIndex: 'modify',
+      },
+    ];
   });
-  const metaData = ref([
-    {
-      label: 'ELF类型文件数量',
-      value: 21,
-    },
-    {
-      label: 'ILF类型文件数量',
-      value: 60,
-    },
-    {
-      label: '功能点计数',
-      value: 2415,
-    },
-    {
-      label: '项目阶段',
-      value: '早期阶段',
-    },
-    {
-      label: '项目规模',
-      value: 2415,
-    },
-  ]);
+  const formRef = ref<FormInstance>();
+  const metaData = ref<DocMetaData>({
+    elfNum: 0,
+    ilfNum: 0,
+    functionPoints: 0,
+    phase: 1,
+  } as DocMetaData);
   const tableData = ref([]);
 
   const fetchData = async () => {
