@@ -1,9 +1,6 @@
 export default {
   'menu.dashboard.estimate': '成本估计',
   'dashboard.title.document': '文档信息',
-  'dashboard.form.label.location': '开发地点',
-  'dashboard.form.label.factor1': '回归因子1',
-  'dashboard.form.label.factor2': '回归因子2',
 
   'stepForm.step.document': '文档上传',
   'stepForm.step.document.info': '上传需求规格说明书',
@@ -11,6 +8,10 @@ export default {
   'stepForm.step.review.info': '检查excel文件，更新数据',
   'stepForm.step.estimate': '成本估计',
   'stepForm.step.estimate.info': '上传文件估计成本',
+
+  'stepForm.title.documentMeta': '文档信息',
+  'stepForm.title.documentData': '文档数据',
+  'stepForm.title.documentUpdate': '上传更改',
 
   'menu.form.step': '分步表单',
   'stepForm.step.title': '创建渠道表单',

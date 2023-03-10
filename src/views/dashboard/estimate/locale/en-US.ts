@@ -1,9 +1,6 @@
 export default {
   'menu.dashboard.estimate': 'Cost Estimate',
   'dashboard.title.document': 'Document Information',
-  'dashboard.form.label.location': 'Development Location',
-  'dashboard.form.label.factor1': 'Factor 1',
-  'dashboard.form.label.factor2': 'Factor 2',
 
   'stepForm.step.document': 'Document Upload',
   'stepForm.step.document.info': 'Upload the requirement specification',
@@ -11,6 +8,10 @@ export default {
   'stepForm.step.review.info': 'Review the uploaded data',
   'stepForm.step.estimate': 'Estimate Cost',
   'stepForm.step.estimate.info': 'Estimate the cost of the project',
+
+  'stepForm.title.documentMeta': 'Document Information',
+  'stepForm.title.documentData': 'Document Data',
+  'stepForm.title.documentUpdate': 'Update Data',
 
   'menu.form.step': 'Step Form',
   'stepForm.step.title': 'Create Channel Forms',

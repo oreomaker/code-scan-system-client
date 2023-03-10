@@ -92,7 +92,7 @@
 
 <style scoped lang="less">
   .container {
-    padding: 0 20px 20px;
+    padding: 0 20px;
   }
 
   .wrapper {
@@ -112,6 +112,6 @@
   }
 
   .steps {
-    margin-bottom: 70px;
+    margin-bottom: 40px;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <a-card class="general-card">
     <template #title>
-      {{ $t('groupForm.title.video') }}
+      {{ $t('stepForm.title.documentMeta') }}
     </template>
     <a-row :gutter="80">
       <a-col :span="8">
@@ -131,25 +131,28 @@
   </a-card>
   <a-card class="general-card">
     <template #title>
-      {{ $t('groupForm.title.video') }}
+      {{ $t('stepForm.title.documentData') }}
     </template>
     <div class="wrapper">
       <a-table
         :loading="loading"
         :columns="columns"
         :data="tableData"
-        style="width: 75%; margin-bottom: 20px"
+        style="margin-bottom: 20px"
         :scroll="scroll"
         :pagination="false"
       />
       <a-button type="text">下载数据</a-button>
     </div>
   </a-card>
-  <a-upload
-    style="width: 680px; margin-top: 20px; margin-bottom: 20px"
-    draggable
-    action="/review/upload"
-  />
+  <a-card class="general-card" style="width: 100%">
+    <template #title>
+      {{ $t('stepForm.title.documentUpdate') }}
+    </template>
+    <div class="wrapper">
+      <a-upload style="width: 80%" draggable action="/review/upload" />
+    </div>
+  </a-card>
   <a-space>
     <a-button type="secondary" @click="goPrev">
       {{ $t('stepForm.button.prev') }}
@@ -241,7 +244,7 @@
 <style scoped lang="less">
   .container {
     .keep-margin {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   }
 
