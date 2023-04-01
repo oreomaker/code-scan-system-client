@@ -13,11 +13,11 @@
           />
         </div>
       </a-card>
-      <CodeTraceResult />
+      <CodeTraceResult v-if="isSubmit" />
     </a-space>
     <div class="actions">
       <a-space>
-        <a-button>
+        <a-button @click="onResetClick">
           {{ $t('trace.upload.reset') }}
         </a-button>
         <a-button type="primary" :loading="loading" @click="onSubmitClick">
@@ -36,14 +36,19 @@
 
   const formRef = ref<FormInstance>();
   const { loading, setLoading } = useLoading();
+  const isSubmit = ref(false);
   const onSubmitClick = async () => {
     const res = await formRef.value?.validate();
     if (!res) {
       setLoading(true);
     }
+    isSubmit.value = true;
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+  };
+  const onResetClick = () => {
+    isSubmit.value = false;
   };
 </script>
 
