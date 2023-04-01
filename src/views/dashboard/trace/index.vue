@@ -3,8 +3,8 @@
     <Breadcrumb :items="['menu.dashboard', 'menu.dashboard.trace']" />
     <a-space direction="vertical" :size="16" fill>
       <a-card class="general-card" :bordered="false">
-        <template #title> Upload Code Package </template>
-        Upload your code package to trace the source of other people's code.
+        <template #title> {{ $t('trace.upload.title') }} </template>
+        {{ $t('trace.upload.detail') }}
         <div class="wrapper">
           <a-upload
             style="width: 680px; margin-top: 20px"
@@ -13,16 +13,15 @@
           />
         </div>
       </a-card>
-      <ContentTypeDistribution />
+      <CodeTraceResult />
     </a-space>
-    <!-- <ContentPublishingSource /> -->
     <div class="actions">
       <a-space>
         <a-button>
-          {{ $t('groupForm.reset') }}
+          {{ $t('trace.upload.reset') }}
         </a-button>
         <a-button type="primary" :loading="loading" @click="onSubmitClick">
-          {{ $t('groupForm.submit') }}
+          {{ $t('trace.upload.button') }}
         </a-button>
       </a-space>
     </div>
@@ -33,7 +32,7 @@
   import { ref } from 'vue';
   import { FormInstance } from '@arco-design/web-vue/es/form';
   import useLoading from '@/hooks/loading';
-  import ContentTypeDistribution from './components/content-type-distribution.vue';
+  import CodeTraceResult from './components/code-trace-result.vue';
 
   const formRef = ref<FormInstance>();
   const { loading, setLoading } = useLoading();

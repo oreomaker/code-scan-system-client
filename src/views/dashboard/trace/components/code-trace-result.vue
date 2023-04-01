@@ -1,7 +1,7 @@
 <template>
   <a-card class="general-card" :header-style="{ paddingBottom: 0 }">
     <template #title>
-      {{ $t('multiDAnalysis.card.title.contentTypeDistribution') }}
+      {{ $t('trace.result.title') }}
     </template>
     <div class="wrapper">
       <Chart style="width: 500px; height: 222px" :option="chartOption" />
@@ -37,12 +37,10 @@
         center: ['40%', '50%'],
         radius: 80,
         indicator: [
-          { name: '国际', max: 6500 },
-          { name: '财经', max: 22000 },
-          { name: '科技', max: 30000 },
+          { name: '数据流', max: 6500 },
+          { name: '代码结构', max: 22000 },
+          { name: '变量名', max: 30000 },
           { name: '其他', max: 38000 },
-          { name: '体育', max: 52000 },
-          { name: '娱乐', max: 25000 },
         ],
         axisName: {
           color: isDark ? '#ffffff' : '#1D2129',
@@ -71,24 +69,24 @@
           },
           data: [
             {
-              value: [4850, 19000, 19000, 29500, 35200, 20000],
-              name: '纯文本',
+              value: [4850, 19000, 19000, 29500],
+              name: '项目一',
               symbol: 'none',
               itemStyle: {
                 color: isDark ? '#6CAAF5' : '#249EFF',
               },
             },
             {
-              value: [2250, 17000, 21000, 23500, 42950, 22000],
-              name: '图文类',
+              value: [2250, 17000, 21000, 23500],
+              name: '项目二',
               symbol: 'none',
               itemStyle: {
                 color: isDark ? '#A079DC' : '#313CA9',
               },
             },
             {
-              value: [5850, 11000, 26000, 27500, 46950, 18000],
-              name: '视频类',
+              value: [5850, 11000, 26000, 27500],
+              name: '项目三',
               symbol: 'none',
               itemStyle: {
                 color: isDark ? '#3D72F6' : '#21CCFF',
