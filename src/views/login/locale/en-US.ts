@@ -1,5 +1,5 @@
 export default {
-  'login.form.title': 'Login to Code Scan',
+  'login.form.title': 'Login to Code Sourcing Platform',
   'login.form.userName.errMsg': 'Username cannot be empty',
   'login.form.password.errMsg': 'Password cannot be empty',
   'login.form.login.errMsg': 'Login error, refresh and try again',

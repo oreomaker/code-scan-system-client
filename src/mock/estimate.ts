@@ -2,7 +2,6 @@ import Mock from 'mockjs';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
 
 setupMock({
-  mock: false,
   setup() {
     // submit
     Mock.mock(new RegExp('/api/channel-form/submit'), () => {
@@ -100,34 +99,27 @@ setupMock({
     // get doc meta
     Mock.mock(new RegExp('/api/docmeta'), () => {
       return successResponseWrap({
-        elfNum: 21,
-        ilfNum: 60,
-        functionPoints: 2415,
+        elfNum: 19,
+        ilfNum: 58,
+        functionPoints: 2315,
+        adjustedScale: 3217.85,
         phase: 1,
+        serviceFactor: 1,
+        fieldFactor: 1,
+        integrityLevelFactor: 1,
+        qualityFactor: 1,
+        devFactor: 1,
+        devCity: '北京',
+        ajustmentFactor: 1,
+        ajustedWorkload: 0,
       });
     });
     // estimate
     Mock.mock(new RegExp('/api/estimate'), () => {
       return successResponseWrap([
         {
-          label: 'Name',
-          value: 'Socrates',
-        },
-        {
-          label: 'Mobile',
-          value: '123-1234-1234',
-        },
-        {
-          label: 'Residence',
-          value: 'Beijing',
-        },
-        {
-          label: 'Hometown',
-          value: 'Beijing',
-        },
-        {
-          label: 'Address',
-          value: 'Yingdu Building, Zhichun Road, Beijing',
+          label: '预估成本',
+          value: '5,070,000.00',
         },
       ]);
     });

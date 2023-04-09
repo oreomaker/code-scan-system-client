@@ -1,5 +1,5 @@
 <template>
-  <a-layout-footer class="footer">Code Scan</a-layout-footer>
+  <a-layout-footer class="footer">© 2023 溯码</a-layout-footer>
 </template>
 
 <script lang="ts" setup></script>
@@ -11,6 +11,7 @@
     justify-content: center;
     height: 40px;
     color: var(--color-text-2);
+    font-size: 11pt;
     text-align: center;
   }
 </style>

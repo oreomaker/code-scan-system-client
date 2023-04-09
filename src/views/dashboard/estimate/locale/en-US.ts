@@ -21,6 +21,16 @@ export default {
   'review.form.metadata.ilf': 'ILF file number',
   'review.form.metadata.funcPoint': 'Function Point',
   'review.form.metadata.phase': 'Project Phase',
+  'review.form.metadata.serviceFactor': 'Service Factor',
+  'review.form.metadata.fieldFactor': 'Field Factor',
+  'review.form.metadata.integrityLevelFactor': 'Integrity Level Factor',
+  'review.form.metadata.qualityFactor': 'Quality Factor',
+  'review.form.metadata.adjustedScale': 'Adjusted Scale',
+  'review.form.metadata.ajustmentFactor': 'Software Adjustment Factor',
+  'review.form.metadata.devFactor': 'Development Adjustment Factor',
+  'review.form.metadata.ajustedWorkload': 'Adjusted Workload',
+  'review.form.metadata.devCity': 'Development Team Location',
+
   'review.form.metadata.phase.placeholder': 'Please choose',
 
   'stepForm.button.next': 'Next',

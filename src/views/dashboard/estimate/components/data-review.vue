@@ -5,7 +5,8 @@
     </template>
     <a-form ref="formRef" layout="vertical" :model="metaData">
       <a-row :gutter="80">
-        <a-col :span="8">
+        <!-- elf文件数 -->
+        <a-col :span="6">
           <a-form-item
             :label="$t('review.form.metadata.elf')"
             field="metaData.elfNum"
@@ -13,7 +14,8 @@
             <a-input-number v-model="metaData.elfNum"> </a-input-number>
           </a-form-item>
         </a-col>
-        <a-col :span="8">
+        <!-- ilf文件数 -->
+        <a-col :span="6">
           <a-form-item
             :label="$t('review.form.metadata.ilf')"
             field="metaData.ilfNum"
@@ -21,17 +23,107 @@
             <a-input-number v-model="metaData.ilfNum"> </a-input-number>
           </a-form-item>
         </a-col>
-        <a-col :span="8">
+        <!-- 功能点 -->
+        <a-col :span="6">
           <a-form-item
             :label="$t('review.form.metadata.funcPoint')"
             field="metaData.functionPoints"
           >
-            <a-input-number v-model="metaData.functionPoints"> </a-input-number>
+            <a-input-number v-model="metaData.functionPoints" read-only>
+            </a-input-number>
+          </a-form-item>
+        </a-col>
+        <!-- 调整后规模 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.adjustedScale')"
+            field="metaData.phase"
+          >
+            <a-input-number v-model="metaData.adjustedScale" read-only>
+            </a-input-number>
           </a-form-item>
         </a-col>
       </a-row>
       <a-row :gutter="80">
-        <a-col :span="8">
+        <!-- 业务领域调整因子 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.serviceFactor')"
+            field="metaData.serviceFactor"
+          >
+            <a-input-number v-model="metaData.serviceFactor"> </a-input-number>
+          </a-form-item>
+        </a-col>
+        <!-- 应用领域调整因子 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.fieldFactor')"
+            field="metaData.fieldFactor"
+          >
+            <a-input-number v-model="metaData.fieldFactor"> </a-input-number>
+          </a-form-item>
+        </a-col>
+        <!-- 完整性级别调整因子 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.integrityLevelFactor')"
+            field="metaData.integrityLevelFactor"
+          >
+            <a-input-number v-model="metaData.integrityLevelFactor">
+            </a-input-number>
+          </a-form-item>
+        </a-col>
+        <!-- 质量要求调整因子 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.qualityFactor')"
+            field="metaData.qualityFactor"
+          >
+            <a-input-number v-model="metaData.qualityFactor"> </a-input-number>
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row :gutter="80">
+        <!-- 软件调整因素 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.ajustmentFactor')"
+            field="metaData.ajustmentFactor"
+          >
+            <a-input-number v-model="ajustmentFactor" read-only>
+            </a-input-number>
+          </a-form-item>
+        </a-col>
+        <!-- 开发调整因素 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.devFactor')"
+            field="metaData.devFactor"
+          >
+            <a-input-number v-model="metaData.devFactor"> </a-input-number>
+          </a-form-item>
+        </a-col>
+        <!-- 调整后工作量 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.ajustedWorkload')"
+            field="metaData.ajustedWorkload"
+          >
+            <a-input-number v-model="ajustedWorkload" read-only>
+            </a-input-number>
+          </a-form-item>
+        </a-col>
+        <!-- 开发团队所在地 -->
+        <a-col :span="6">
+          <a-form-item
+            :label="$t('review.form.metadata.devCity')"
+            field="metaData.devCity"
+          >
+            <a-input v-model="metaData.devCity"> </a-input>
+          </a-form-item>
+        </a-col>
+        <!-- 开发阶段 -->
+        <!-- <a-col :span="6">
           <a-form-item
             :label="$t('review.form.metadata.phase')"
             field="metaData.phase"
@@ -46,7 +138,7 @@
               <a-option :value="4">交付后及运维</a-option>
             </a-select>
           </a-form-item>
-        </a-col>
+        </a-col> -->
       </a-row>
     </a-form>
   </a-card>
@@ -124,9 +216,42 @@
   const metaData = ref<DocMetaData>({
     elfNum: 0,
     ilfNum: 0,
-    functionPoints: 0,
+    serviceFactor: 1,
+    fieldFactor: 1,
+    integrityLevelFactor: 1,
+    qualityFactor: 1,
+    devFactor: 1,
+    devCity: '北京',
     phase: 1,
+    functionPoints: 0,
+    adjustedScale: 0,
+    ajustmentFactor: 1,
+    ajustedWorkload: 0,
   } as DocMetaData);
+  // 软件调整因素
+  const ajustmentFactor = computed(() => {
+    return parseFloat(
+      (
+        metaData.value.serviceFactor *
+        metaData.value.fieldFactor *
+        metaData.value.integrityLevelFactor *
+        metaData.value.qualityFactor
+      ).toFixed(2)
+    );
+  });
+  // 调整后工作量
+  const ajustedWorkload = computed(() => {
+    return parseFloat(
+      (
+        (metaData.value.adjustedScale *
+          7.01 *
+          ajustmentFactor.value *
+          metaData.value.devFactor) /
+        8 /
+        21.75
+      ).toFixed(2)
+    );
+  });
   const tableData = ref([]);
 
   const fetchData = async () => {
