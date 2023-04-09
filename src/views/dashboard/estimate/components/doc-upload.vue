@@ -1,5 +1,5 @@
 <template>
-  <a-upload style="width: 680px" draggable action="/estimate/upload" />
+  <a-upload style="width: 680px" draggable action="/api/estimate/upload" />
   <a-button style="margin-top: 40px" type="primary" @click="onNextClick">
     {{ $t('stepForm.button.next') }}
   </a-button>
