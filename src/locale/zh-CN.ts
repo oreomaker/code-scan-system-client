@@ -8,6 +8,7 @@ import localeSettings from './zh-CN/settings';
 
 export default {
   'menu.dashboard': '工作台',
+  'menu.dashboard.workplace': '工作台',
   'menu.arcoWebsite': 'Arco Design',
   'menu.faq': '常见问题',
   'navbar.docs': '文档中心',
