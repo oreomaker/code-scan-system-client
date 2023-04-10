@@ -123,5 +123,9 @@ setupMock({
         },
       ]);
     });
+    // upload
+    Mock.mock(new RegExp('/api/estimate/upload'), () => {
+      return successResponseWrap('ok');
+    });
   },
 });

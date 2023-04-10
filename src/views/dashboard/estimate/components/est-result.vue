@@ -31,23 +31,7 @@
   };
   const data = ref([
     {
-      label: 'Name',
-      value: '',
-    },
-    {
-      label: 'Mobile',
-      value: '',
-    },
-    {
-      label: 'Residence',
-      value: '',
-    },
-    {
-      label: 'Hometown',
-      value: '',
-    },
-    {
-      label: 'Address',
+      label: '预估成本',
       value: '',
     },
   ]);

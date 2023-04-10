@@ -96,11 +96,20 @@
           <a-upload
             style="width: 680px; margin-top: 20px"
             draggable
-            action="/trace/upload"
+            action="/api/trace/upload"
           />
         </div>
       </a-card>
-      <CodeTraceResult v-if="isSubmit" />
+      <a-card
+        v-if="isSubmit"
+        class="general-card"
+        :header-style="{ paddingBottom: 0 }"
+      >
+        <template #title>
+          {{ $t('trace.result.title') }}
+        </template>
+        <CodeTraceResult />
+      </a-card>
     </a-space>
     <div class="actions">
       <a-space>
