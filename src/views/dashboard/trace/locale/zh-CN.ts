@@ -1,5 +1,13 @@
 export default {
   'menu.dashboard.trace': '代码溯源',
+  'trace.info.title': '信息填充',
+  'trace.metadata.applicationField': '应用领域',
+  'trace.metadata.similarityThreshold': '可接受相似度阈值',
+  'trace.metadata.similarityWeight': '文本相似度权重',
+  'trace.metadata.controlFlowWeight': '控制流分析权重',
+  'trace.metadata.depdGraphWeight': '程序依赖图权重',
+  'trace.metadata.astWeight': '抽象语法树权重',
+  'trace.metadata.projectCost': '项目成本(万元)',
   'trace.upload.title': '上传代码包',
   'trace.upload.detail': '上传你的代码包，溯源代码。',
   'trace.upload.button': '提交',

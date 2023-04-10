@@ -2,6 +2,93 @@
   <div class="container">
     <Breadcrumb :items="['menu.dashboard', 'menu.dashboard.trace']" />
     <a-space direction="vertical" :size="16" fill>
+      <a-card class="general-card" style="width: 100%">
+        <template #title>
+          {{ $t('trace.info.title') }}
+        </template>
+        <a-form ref="formRef" layout="vertical" :model="metaData">
+          <a-row :gutter="80">
+            <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.applicationField')"
+                field="metaData.applicationField"
+              >
+                <a-select
+                  v-model="metaData.applicationField"
+                  :placeholder="$t('trace.metadata.applicationField')"
+                >
+                  <a-option :value="1">政府</a-option>
+                  <a-option :value="2">教育</a-option>
+                  <a-option :value="3">能源</a-option>
+                  <a-option :value="4">交通</a-option>
+                  <a-option :value="5">制造</a-option>
+                </a-select>
+              </a-form-item>
+            </a-col>
+            <!-- 可接受相似度阈值 -->
+            <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.similarityThreshold')"
+                field="metaData.similarityThreshold"
+              >
+                <a-input-number v-model="metaData.similarityThreshold">
+                </a-input-number>
+              </a-form-item>
+            </a-col>
+            <!-- 文本相似度权重 -->
+            <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.similarityWeight')"
+                field="metaData.similarityWeight"
+              >
+                <a-input-number v-model="metaData.similarityWeight">
+                </a-input-number>
+              </a-form-item>
+            </a-col>
+            <!-- 控制流分析相似度权重 -->
+            <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.controlFlowWeight')"
+                field="metaData.controlFlowWeight"
+              >
+                <a-input-number v-model="metaData.controlFlowWeight">
+                </a-input-number>
+              </a-form-item>
+            </a-col>
+          </a-row>
+          <a-row :gutter="80">
+            <!-- 依赖图分析权重 -->
+            <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.depdGraphWeight')"
+                field="metaData.depdGraphWeight"
+              >
+                <a-input-number v-model="metaData.depdGraphWeight">
+                </a-input-number>
+              </a-form-item>
+            </a-col>
+            <!-- 抽象语法树分析相似度权重 -->
+            <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.astWeight')"
+                field="metaData.astWeight"
+              >
+                <a-input-number v-model="metaData.astWeight"> </a-input-number>
+              </a-form-item>
+            </a-col>
+            <!-- 项目成本 -->
+            <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.projectCost')"
+                field="metaData.projectCost"
+              >
+                <a-input-number v-model="metaData.projectCost">
+                </a-input-number>
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </a-form>
+      </a-card>
       <a-card class="general-card" :bordered="false">
         <template #title> {{ $t('trace.upload.title') }} </template>
         {{ $t('trace.upload.detail') }}
@@ -32,11 +119,22 @@
   import { ref } from 'vue';
   import { FormInstance } from '@arco-design/web-vue/es/form';
   import useLoading from '@/hooks/loading';
+  import { CodeMetaData } from '@/api/trace';
   import CodeTraceResult from './components/code-trace-result.vue';
 
   const formRef = ref<FormInstance>();
   const { loading, setLoading } = useLoading();
   const isSubmit = ref(false);
+  const metaData = ref<CodeMetaData>({
+    applicationField: 1,
+    similarityThreshold: 0.6,
+    similarityWeight: 0.25,
+    controlFlowWeight: 0.25,
+    depdGraphWeight: 0.25,
+    astWeight: 0.25,
+    projectCost: 503,
+  } as CodeMetaData);
+
   const onSubmitClick = async () => {
     const res = await formRef.value?.validate();
     if (!res) {
