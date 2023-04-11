@@ -108,7 +108,7 @@
         <template #title>
           {{ $t('trace.result.title') }}
         </template>
-        <CodeTraceResult />
+        <CodeTraceResult ref="codeTraceRes" />
       </a-card>
     </a-space>
     <div class="actions">
@@ -134,6 +134,7 @@
   const formRef = ref<FormInstance>();
   const { loading, setLoading } = useLoading();
   const isSubmit = ref(false);
+  const codeTraceRes = ref(null as any);
   const metaData = ref<CodeMetaData>({
     applicationField: 1,
     similarityThreshold: 0.6,
@@ -150,6 +151,7 @@
       setLoading(true);
     }
     isSubmit.value = true;
+    await codeTraceRes.value?.fetchData();
     setTimeout(() => {
       setLoading(false);
     }, 1000);

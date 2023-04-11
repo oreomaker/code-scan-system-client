@@ -23,11 +23,31 @@ const DASHBOARD: AppRouteRecordRaw = {
       },
     },
     {
+      path: 'estimate-history',
+      name: 'Estimate History',
+      component: () => import('@/views/dashboard/estHistory/index.vue'),
+      meta: {
+        locale: 'menu.dashboard.estHistory',
+        requiresAuth: true,
+        roles: ['*'],
+      },
+    },
+    {
       path: 'trace',
       name: 'Trace',
       component: () => import('@/views/dashboard/trace/index.vue'),
       meta: {
         locale: 'menu.dashboard.trace',
+        requiresAuth: true,
+        roles: ['*'],
+      },
+    },
+    {
+      path: 'trace-history',
+      name: 'Trace History',
+      component: () => import('@/views/dashboard/traceHistory/index.vue'),
+      meta: {
+        locale: 'menu.dashboard.traceHistory',
         requiresAuth: true,
         roles: ['*'],
       },

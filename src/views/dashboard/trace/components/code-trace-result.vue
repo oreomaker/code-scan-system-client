@@ -2,20 +2,24 @@
   <div class="wrapper">
     <Chart style="width: 500px; height: 222px" :option="chartOption" />
   </div>
-  <a-descriptions :data="data" :column="{ xs: 1, md: 3, lg: 4 }">
-    <a-descriptions-item
-      v-for="item of data"
-      :key="item.label"
-      :label="item.label"
-    >
-      <a-tag>{{ item.value }}</a-tag>
-    </a-descriptions-item>
-  </a-descriptions>
+  <a-table
+    :loading="loading"
+    :columns="columns"
+    :data="tableData"
+    style="margin-bottom: 20px"
+    :pagination="false"
+  />
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { ref, computed } from 'vue';
+  import { useI18n } from 'vue-i18n';
   import useChartOption from '@/hooks/chart-option';
+  import useLoading from '@/hooks/loading';
+  import { getTraceResult } from '@/api/trace';
+
+  const { loading, setLoading } = useLoading(true);
+  const { t } = useI18n();
 
   const { chartOption } = useChartOption((isDark) => {
     return {
@@ -103,40 +107,53 @@
       ],
     };
   });
-  const data = ref([
-    {
-      label: '版本号',
-      value: '1.0.0',
-    },
-    {
-      label: '可能存在的漏洞',
-      value: 'none',
-    },
-    {
-      label: '文本相似度',
-      value: '54',
-    },
-    {
-      label: '控制流分析',
-      value: '14',
-    },
-    {
-      label: '程序依赖图',
-      value: '12',
-    },
-    {
-      label: '抽象语法树',
-      value: '20',
-    },
-    {
-      label: '总评估相似度',
-      value: '60',
-    },
-    {
-      label: '项目地址',
-      value: 'https://github.com/example/exapmle.git',
-    },
-  ]);
+  const columns = computed(() => {
+    return [
+      {
+        title: t('traceHistory.table.column.projectUrl'),
+        dataIndex: 'projectUrl',
+      },
+      {
+        title: t('traceHistory.table.column.version'),
+        dataIndex: 'version',
+      },
+      {
+        title: t('traceHistory.table.column.vulnerability'),
+        dataIndex: 'vulnerability',
+      },
+      {
+        title: t('traceHistory.table.column.textSimilarity'),
+        dataIndex: 'textSimilarity',
+      },
+      {
+        title: t('traceHistory.table.column.ctrlFlow'),
+        dataIndex: 'ctrlFlow',
+      },
+      {
+        title: t('traceHistory.table.column.depdGraph'),
+        dataIndex: 'depdGraph',
+      },
+      {
+        title: t('traceHistory.table.column.ast'),
+        dataIndex: 'ast',
+      },
+      {
+        title: t('traceHistory.table.column.similarity'),
+        dataIndex: 'similarity',
+      },
+    ];
+  });
+
+  const tableData = ref([]);
+  const fetchData = async () => {
+    setLoading(true);
+    const res = await getTraceResult();
+    tableData.value = res.data;
+    setLoading(false);
+  };
+  defineExpose({
+    fetchData,
+  });
 </script>
 
 <style scoped lang="less">

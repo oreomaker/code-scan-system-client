@@ -1,16 +1,23 @@
 <template>
   <a-spin class="success-wrap" :loading="loading">
-    <a-space direction="vertical" size="large" fill>
-      <a-descriptions :data="data" title="估计结果" :column="3">
-        <a-descriptions-item
-          v-for="item of data"
-          :key="item.label"
-          :label="item.label"
+    <a-card class="general-card">
+      <div class="wrapper">
+        <a-table
+          :loading="loading"
+          :columns="columns"
+          :data="data"
+          style="margin-bottom: 20px"
+          :pagination="false"
         >
-          <a-tag>{{ item.value }}</a-tag>
-        </a-descriptions-item>
-      </a-descriptions>
-    </a-space>
+          <template #docUrl="{ record }">
+            <a-link @click="download(record.docUrl)">下载</a-link>
+          </template>
+          <template #dataFile="{ record }">
+            <a-link @click="download(record.dataFile)">下载 </a-link>
+          </template>
+        </a-table>
+      </div>
+    </a-card>
     <a-space :size="16" style="margin-top: 40px">
       <a-button key="agian" type="primary" @click="oneMore">
         {{ $t('stepForm.button.again') }}
@@ -20,21 +27,18 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { ref, computed } from 'vue';
+  import { useI18n } from 'vue-i18n';
   import { estimate } from '@/api/estimate';
   import useLoading from '@/hooks/loading';
 
   const emits = defineEmits(['changeStep']);
   const { loading, setLoading } = useLoading(true);
+  const { t } = useI18n();
   const oneMore = () => {
     emits('changeStep', 1);
   };
-  const data = ref([
-    {
-      label: '预估成本',
-      value: '',
-    },
-  ]);
+  const data = ref([]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -44,6 +48,53 @@
   };
 
   fetchData();
+
+  const download = (url: string) => {
+    window.open(url, '_blank');
+  };
+
+  const columns = computed(() => {
+    return [
+      {
+        title: t('estHistory.table.column.name'),
+        dataIndex: 'name',
+      },
+      {
+        title: t('estHistory.table.column.docUrl'),
+        dataIndex: 'docUrl',
+        slotName: 'docUrl',
+      },
+      {
+        title: t('estHistory.table.column.dataFile'),
+        dataIndex: 'dataFile',
+        slotName: 'docUrl',
+      },
+      {
+        title: t('estHistory.table.column.funcPoint'),
+        dataIndex: 'funcPoint',
+      },
+      {
+        title: t('estHistory.table.column.scale'),
+        dataIndex: 'scale',
+      },
+      {
+        title: t('estHistory.table.column.adjustedFoctor'),
+        dataIndex: 'adjustedFactor',
+      },
+      {
+        title: t('estHistory.table.column.workload'),
+        dataIndex: 'workload',
+      },
+      {
+        title: t('estHistory.table.column.city'),
+        dataIndex: 'city',
+      },
+      {
+        title: t('estHistory.table.column.cost'),
+        dataIndex: 'cost',
+      },
+    ];
+  });
 </script>
 
 <style scoped lang="less">

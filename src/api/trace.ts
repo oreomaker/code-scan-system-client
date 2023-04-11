@@ -9,3 +9,7 @@ export interface CodeMetaData {
   astWeight: number;
   projectCost: number;
 }
+
+export function getTraceResult() {
+  return axios.get('/api/trace');
+}

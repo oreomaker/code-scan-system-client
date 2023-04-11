@@ -3,6 +3,8 @@ import localeLogin from '@/views/login/locale/zh-CN';
 
 import localeEstimate from '@/views/dashboard/estimate/locale/zh-CN';
 import localeTrace from '@/views/dashboard/trace/locale/zh-CN';
+import localeEstHistory from '@/views/dashboard/estHistory/locale/zh-CN';
+import localeTraceHistory from '@/views/dashboard/traceHistory/locale/zh-CN';
 
 import localeSettings from './zh-CN/settings';
 
@@ -18,4 +20,6 @@ export default {
   ...localeLogin,
   ...localeEstimate,
   ...localeTrace,
+  ...localeEstHistory,
+  ...localeTraceHistory,
 };

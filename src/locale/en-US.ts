@@ -3,6 +3,8 @@ import localeLogin from '@/views/login/locale/en-US';
 
 import localeEstimate from '@/views/dashboard/estimate/locale/en-US';
 import localeTrace from '@/views/dashboard/trace/locale/en-US';
+import localeEstHistory from '@/views/dashboard/estHistory/locale/en-US';
+import localeTraceHistory from '@/views/dashboard/traceHistory/locale/en-US';
 
 import localeSettings from './en-US/settings';
 
@@ -17,4 +19,6 @@ export default {
   ...localeLogin,
   ...localeEstimate,
   ...localeTrace,
+  ...localeEstHistory,
+  ...localeTraceHistory,
 };
