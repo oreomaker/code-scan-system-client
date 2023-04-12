@@ -26,9 +26,7 @@
                 </a-select>
               </a-form-item>
             </a-col>
-          </a-row>
-          <a-row :gutter="80">
-              <!-- 文本相似度权重 -->
+            <!-- 文本相似度权重 -->
             <a-col :span="6">
               <a-form-item
                 :label="$t('trace.metadata.similarityWeight')"
@@ -58,6 +56,8 @@
                 </a-input-number>
               </a-form-item>
             </a-col>
+          </a-row>
+          <a-row :gutter="80">
             <!-- 抽象语法树分析相似度权重 -->
             <a-col :span="6">
               <a-form-item
@@ -67,8 +67,6 @@
                 <a-input-number v-model="metaData.astWeight"> </a-input-number>
               </a-form-item>
             </a-col>
-          </a-row>
-          <a-row :gutter="80">
             <!-- 可接受相似度阈值 -->
             <a-col :span="6">
               <a-form-item
@@ -111,7 +109,7 @@
         <template #title>
           {{ $t('trace.result.title') }}
         </template>
-        <CodeTraceResult ref="codeTraceRes" />
+        <CodeTraceResult :table-data="tableData" />
       </a-card>
     </a-space>
     <div class="actions">
@@ -131,13 +129,12 @@
   import { ref } from 'vue';
   import { FormInstance } from '@arco-design/web-vue/es/form';
   import useLoading from '@/hooks/loading';
-  import { CodeMetaData } from '@/api/trace';
+  import { CodeMetaData, getTraceResult } from '@/api/trace';
   import CodeTraceResult from './components/code-trace-result.vue';
 
   const formRef = ref<FormInstance>();
   const { loading, setLoading } = useLoading();
   const isSubmit = ref(false);
-  const codeTraceRes = ref(null as any);
   const metaData = ref<CodeMetaData>({
     applicationField: 1,
     similarityThreshold: 0.5,
@@ -148,13 +145,21 @@
     projectCost: 507,
   } as CodeMetaData);
 
+  const tableData = ref([]);
+  const fetchData = async () => {
+    setLoading(true);
+    const res = await getTraceResult();
+    tableData.value = res.data;
+    setLoading(false);
+  };
+
   const onSubmitClick = async () => {
     const res = await formRef.value?.validate();
     if (!res) {
       setLoading(true);
     }
     isSubmit.value = true;
-    await codeTraceRes.value?.fetchData();
+    await fetchData();
     setTimeout(() => {
       setLoading(false);
     }, 1000);

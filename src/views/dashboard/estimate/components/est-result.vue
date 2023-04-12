@@ -119,23 +119,24 @@
             <a-input v-model="metaData.devCity"> </a-input>
           </a-form-item>
         </a-col>
+      </a-row>
+      <a-row :gutter="80">
         <!-- 项目成本 -->
-        <a-col :span="6" style="margin-left: 600px">
+        <a-col :span="12" :offset="6">
           <a-form-item
             :label="$t('review.form.metadata.money')"
             field="metaData.money"
           >
-            <a-input-number v-model="money" read-only>
-            </a-input-number>
+            <a-input-number v-model="money" read-only> </a-input-number>
           </a-form-item>
         </a-col>
       </a-row>
     </a-form>
   </a-card>
   <a-space :size="16" style="margin-top: 40px">
-      <a-button key="agian" type="primary" @click="oneMore">
-        {{ $t('stepForm.button.again') }}
-      </a-button>
+    <a-button key="agian" type="primary" @click="oneMore">
+      {{ $t('stepForm.button.again') }}
+    </a-button>
   </a-space>
 </template>
 
@@ -154,17 +155,17 @@
   const metaData = ref<DocMetaData>({
     elfNum: 19,
     ilfNum: 58,
-    serviceFactor: 1.10,
-    fieldFactor: 1.00,
-    integrityLevelFactor: 1.10,
-    qualityFactor: 1.00,
-    devFactor: 1.00,
+    serviceFactor: 1.1,
+    fieldFactor: 1.0,
+    integrityLevelFactor: 1.1,
+    qualityFactor: 1.0,
+    devFactor: 1.0,
     devCity: '北京',
     functionPoints: 2315,
     adjustedScale: 3217.85,
     ajustmentFactor: 1.21,
     ajustedWorkload: 156.86,
-    money:507
+    money: 507,
   } as DocMetaData);
   // 软件调整因素
   const ajustmentFactor = computed(() => {

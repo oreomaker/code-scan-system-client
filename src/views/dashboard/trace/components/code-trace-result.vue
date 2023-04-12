@@ -3,22 +3,18 @@
     <Chart style="width: 500px; height: 222px" :option="chartOption" />
   </div>
   <a-table
-    :loading="loading"
     :columns="columns"
-    :data="tableData"
+    :data="props.tableData as Array<any>"
     style="margin-bottom: 20px"
     :pagination="false"
   />
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
   import { useI18n } from 'vue-i18n';
   import useChartOption from '@/hooks/chart-option';
-  import useLoading from '@/hooks/loading';
-  import { getTraceResult } from '@/api/trace';
 
-  const { loading, setLoading } = useLoading(true);
   const { t } = useI18n();
 
   const { chartOption } = useChartOption((isDark) => {
@@ -144,15 +140,8 @@
     ];
   });
 
-  const tableData = ref([]);
-  const fetchData = async () => {
-    setLoading(true);
-    const res = await getTraceResult();
-    tableData.value = res.data;
-    setLoading(false);
-  };
-  defineExpose({
-    fetchData,
+  const props = defineProps({
+    tableData: Array,
   });
 </script>
 

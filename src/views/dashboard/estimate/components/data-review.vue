@@ -4,7 +4,7 @@
       {{ $t('stepForm.title.documentMeta') }}
     </template>
     <a-form ref="formRef" layout="vertical" :model="metaData">
-      <a-row :gutter="90">
+      <a-row :gutter="80">
         <!-- elf文件数 -->
         <a-col :span="6">
           <a-form-item
