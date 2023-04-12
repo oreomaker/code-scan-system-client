@@ -142,11 +142,11 @@
     controlFlowWeight: 0.25,
     depdGraphWeight: 0.25,
     astWeight: 0.25,
-    projectCost: 507,
+    projectCost: 0,
   } as CodeMetaData);
 
   const tableData = ref([]);
-  const fetchData = async () => {
+  const fetchTableData = async () => {
     setLoading(true);
     const res = await getTraceResult();
     tableData.value = res.data;
@@ -159,7 +159,7 @@
       setLoading(true);
     }
     isSubmit.value = true;
-    await fetchData();
+    await fetchTableData();
     setTimeout(() => {
       setLoading(false);
     }, 1000);

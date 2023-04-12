@@ -7,7 +7,14 @@
     :data="props.tableData as Array<any>"
     style="margin-bottom: 20px"
     :pagination="false"
-  />
+  >
+    <template #projectUrl="{ record }">
+      <a-link @click="download(record.projectUrl)">查看 </a-link>
+    </template>
+    <template #vulnerability="{ record }">
+      <a-link @click="download(record.vulnerability)">查看 </a-link>
+    </template>
+  </a-table>
 </template>
 
 <script lang="ts" setup>
@@ -75,39 +82,41 @@
           },
           data: [
             {
-              value: [48, 19, 19, 29, 10],
+              value: [47.81, 64.71, 67.42, 43.21, 73.62],
               name: '项目一',
               symbol: 'none',
               itemStyle: {
                 color: isDark ? '#6CAAF5' : '#249EFF',
               },
             },
-            // {
-            //   value: [2250, 17000, 21000, 23500],
-            //   name: '项目二',
-            //   symbol: 'none',
-            //   itemStyle: {
-            //     color: isDark ? '#A079DC' : '#313CA9',
-            //   },
-            // },
-            // {
-            //   value: [5850, 11000, 26000, 27500],
-            //   name: '项目三',
-            //   symbol: 'none',
-            //   itemStyle: {
-            //     color: isDark ? '#3D72F6' : '#21CCFF',
-            //   },
-            // },
+            {
+              value: [43.52, 60.67, 43.21, 42.17, 68.91],
+              name: '项目二',
+              symbol: 'none',
+              itemStyle: {
+                color: isDark ? '#A079DC' : '#313CA9',
+              },
+            },
+            {
+              value: [47.93, 61.72, 42.93, 67.33],
+              name: '项目三',
+              symbol: 'none',
+              itemStyle: {
+                color: isDark ? '#3D72F6' : '#21CCFF',
+              },
+            },
           ],
         },
       ],
     };
   });
+
   const columns = computed(() => {
     return [
       {
         title: t('traceHistory.table.column.projectUrl'),
         dataIndex: 'projectUrl',
+        slotName: 'projectUrl',
       },
       {
         title: t('traceHistory.table.column.version'),
@@ -116,6 +125,7 @@
       {
         title: t('traceHistory.table.column.vulnerability'),
         dataIndex: 'vulnerability',
+        slotName: 'vulnerability',
       },
       {
         title: t('traceHistory.table.column.textSimilarity'),
@@ -143,6 +153,10 @@
   const props = defineProps({
     tableData: Array,
   });
+
+  const download = (url: string) => {
+    window.open(url, '_blank');
+  };
 </script>
 
 <style scoped lang="less">

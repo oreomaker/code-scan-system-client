@@ -17,5 +17,5 @@ export interface TraceHistory {
 }
 
 export function getTraceHistory() {
-  return axios.get('/api/trace-history');
+  return axios.get('/api/t-history');
 }

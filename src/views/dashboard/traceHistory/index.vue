@@ -8,7 +8,7 @@
       <a-table
         :loading="loading"
         :columns="columns"
-        :data="tableData"
+        :data="traceHistoryData"
         style="margin-bottom: 20px"
         :scroll="scroll"
         :pagination="false"
@@ -17,6 +17,9 @@
           <a-link @click="download(record.projectUrl)"
             >{{ record.projectUrl }}
           </a-link>
+        </template>
+        <template #vulnerability="{ record }">
+          <a-link @click="download(record.vulnerability)">查看 </a-link>
         </template>
       </a-table>
     </a-card>
@@ -34,7 +37,7 @@
 
   const scroll = {
     x: '80%',
-    y: 450,
+    y: 500,
   };
 
   const columns = computed(() => {
@@ -51,6 +54,7 @@
       {
         title: t('traceHistory.table.column.vulnerability'),
         dataIndex: 'vulnerability',
+        slotName: 'vulnerability',
       },
       {
         title: t('traceHistory.table.column.textSimilarity'),
@@ -75,12 +79,12 @@
     ];
   });
 
-  const tableData = ref([]);
+  const traceHistoryData = ref([]);
 
   const fetchData = async () => {
     setLoading(true);
     const data = await getTraceHistory();
-    tableData.value = data.data;
+    traceHistoryData.value = data.data;
     setLoading(false);
   };
 
