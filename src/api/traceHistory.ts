@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export interface TraceHistory {
   id: number;
+  name: string;
+  packageUrl: string;
   projectUrl: string;
   version: string;
   vulnerability: string;

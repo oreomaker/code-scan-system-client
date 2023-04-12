@@ -1,5 +1,6 @@
 import Mock from 'mockjs';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
+import functionPoint from './functionPoint.json';
 
 setupMock({
   setup() {
@@ -9,92 +10,7 @@ setupMock({
     });
     // get table data
     Mock.mock(new RegExp('/api/table'), () => {
-      return successResponseWrap([
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-        {
-          function: '5.1 建设规模',
-          catagory: 'ILF',
-          reuse: '低',
-          modify: '新增',
-        },
-      ]);
+      return successResponseWrap(functionPoint.data);
     });
     // get doc meta
     Mock.mock(new RegExp('/api/docmeta'), () => {

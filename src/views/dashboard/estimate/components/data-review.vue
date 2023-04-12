@@ -93,7 +93,7 @@
 
   const scroll = {
     x: '80%',
-    y: 500,
+    y: 450,
   };
 
   const columns = computed(() => {
@@ -104,7 +104,7 @@
       },
       {
         title: t('review.docData.column.catagory'),
-        dataIndex: 'catagory',
+        dataIndex: 'category',
       },
     ];
   });
