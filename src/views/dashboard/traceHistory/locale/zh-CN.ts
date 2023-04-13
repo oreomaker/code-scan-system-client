@@ -1,7 +1,11 @@
 export default {
   'menu.dashboard.traceHistory': '代码溯源历史记录',
+  'menu.dashboard.download': '下载',
+  'menu.dashboard.see': '查看',
   'traceHistory.table.title': '历史记录',
-  'traceHistory.table.column.projectUrl': '项目地址',
+  'traceHistory.table.column.name': '项目名称',
+  'traceHistory.table.column.packageUrl': '溯源代码包',
+  'traceHistory.table.column.projectUrl': '参考项目地址',
   'traceHistory.table.column.version': '版本号',
   'traceHistory.table.column.vulnerability': '可能漏洞',
   'traceHistory.table.column.textSimilarity': '文本相似度',

@@ -1,7 +1,11 @@
 export default {
   'menu.dashboard.traceHistory': 'Code Trace History',
+  'menu.dashboard.download': 'Download',
+  'menu.dashboard.see': 'See',
   'traceHistory.table.title': 'History',
-  'traceHistory.table.column.projectUrl': 'Project URL',
+  'traceHistory.table.column.name': 'Project Name',
+  'traceHistory.table.column.packageUrl': 'Trace Package',
+  'traceHistory.table.column.projectUrl': 'Referencing Project URL',
   'traceHistory.table.column.version': 'Version',
   'traceHistory.table.column.vulnerability': 'Vulnerability',
   'traceHistory.table.column.textSimilarity': 'Text Similarity',

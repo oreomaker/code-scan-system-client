@@ -13,13 +13,20 @@
         :scroll="scroll"
         :pagination="false"
       >
+        <template #packageUrl="{ record }">
+          <a-link @click="download(record.packageUrl)"
+            >{{ t('menu.dashboard.download') }}
+          </a-link>
+        </template>
         <template #projectUrl="{ record }">
           <a-link @click="download(record.projectUrl)"
             >{{ record.projectUrl }}
           </a-link>
         </template>
         <template #vulnerability="{ record }">
-          <a-link @click="download(record.vulnerability)">查看 </a-link>
+          <a-link @click="download(record.vulnerability)"
+            >{{ t('menu.dashboard.see') }}
+          </a-link>
         </template>
       </a-table>
     </a-card>
@@ -42,6 +49,16 @@
 
   const columns = computed(() => {
     return [
+      {
+        title: t('traceHistory.table.column.name'),
+        dataIndex: 'name',
+        slotName: 'name',
+      },
+      {
+        title: t('traceHistory.table.column.packageUrl'),
+        dataIndex: 'packageUrl',
+        slotName: 'packageUrl',
+      },
       {
         title: t('traceHistory.table.column.projectUrl'),
         dataIndex: 'projectUrl',

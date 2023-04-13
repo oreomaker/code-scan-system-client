@@ -150,7 +150,7 @@
     emits('changeStep', 1);
   };
 
-  const money = 507;
+  const money = 524;
 
   const metaData = ref<DocMetaData>({
     elfNum: 19,
@@ -165,7 +165,7 @@
     adjustedScale: 3217.85,
     ajustmentFactor: 1.21,
     ajustedWorkload: 156.86,
-    money: 507,
+    money: 524,
   } as DocMetaData);
   // 软件调整因素
   const ajustmentFactor = computed(() => {

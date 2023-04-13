@@ -9,10 +9,14 @@
     :pagination="false"
   >
     <template #projectUrl="{ record }">
-      <a-link @click="download(record.projectUrl)">查看 </a-link>
+      <a-link @click="download(record.projectUrl)">
+        {{ t('menu.dashboard.see') }}
+      </a-link>
     </template>
     <template #vulnerability="{ record }">
-      <a-link @click="download(record.vulnerability)">查看 </a-link>
+      <a-link @click="download(record.vulnerability)"
+        >{{ t('menu.dashboard.see') }}
+      </a-link>
     </template>
   </a-table>
 </template>

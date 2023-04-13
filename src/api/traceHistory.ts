@@ -4,6 +4,7 @@ export interface TraceHistory {
   id: number;
   name: string;
   packageUrl: string;
+  referencingId: number;
   projectUrl: string;
   version: string;
   vulnerability: string;

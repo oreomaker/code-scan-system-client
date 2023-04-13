@@ -15,18 +15,18 @@ setupMock({
     // get doc meta
     Mock.mock(new RegExp('/api/docmeta'), () => {
       return successResponseWrap({
-        elfNum: 19,
-        ilfNum: 58,
-        functionPoints: 2315,
-        adjustedScale: 3217.85,
+        elfNum: 15,
+        ilfNum: 62,
+        functionPoints: 2395,
+        adjustedScale: 3329,
         phase: 1,
-        serviceFactor: 1,
+        serviceFactor: 1.1,
         fieldFactor: 1,
-        integrityLevelFactor: 1,
+        integrityLevelFactor: 1.1,
         qualityFactor: 1,
         devFactor: 1,
         devCity: '北京',
-        ajustmentFactor: 1,
+        ajustmentFactor: 1.21,
         ajustedWorkload: 0,
       });
     });
@@ -43,7 +43,7 @@ setupMock({
           adjustedFactor: 1.21,
           workload: 156.86,
           city: '北京',
-          cost: 507,
+          cost: 524,
         },
       ]);
     });

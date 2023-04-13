@@ -15,7 +15,7 @@ setupMock({
           adjustedFactor: 1.21,
           workload: 156.86,
           city: '北京',
-          cost: 507,
+          cost: 524,
         },
       ]);
     });

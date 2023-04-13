@@ -14,10 +14,14 @@
         :pagination="false"
       >
         <template #docUrl="{ record }">
-          <a-link @click="download(record.docUrl)">下载</a-link>
+          <a-link @click="download(record.docUrl)">{{
+            t('menu.dashboard.download')
+          }}</a-link>
         </template>
         <template #dataFile="{ record }">
-          <a-link @click="download(record.dataFile)">下载 </a-link>
+          <a-link @click="download(record.dataFile)"
+            >{{ t('menu.dashboard.download') }}
+          </a-link>
         </template>
       </a-table>
     </a-card>
