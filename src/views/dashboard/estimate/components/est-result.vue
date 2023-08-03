@@ -127,7 +127,8 @@
             :label="$t('review.form.metadata.money')"
             field="metaData.money"
           >
-            <a-input-number v-model="money" read-only> </a-input-number>
+            <a-input-number v-model="metaData.money" read-only>
+            </a-input-number>
           </a-form-item>
         </a-col>
       </a-row>
@@ -149,8 +150,6 @@
   const oneMore = () => {
     emits('changeStep', 1);
   };
-
-  const money = 524;
 
   const metaData = ref<DocMetaData>({
     elfNum: 19,
