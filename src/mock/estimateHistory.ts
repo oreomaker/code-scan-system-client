@@ -7,15 +7,15 @@ setupMock({
       return successResponseWrap([
         {
           id: 0,
-          name: '"互联网+监管"系统数据中心建设',
+          name: '现场演示功能点案例',
           docUrl: 'https://www.example.com',
           dataFile: 'https://www.example.com',
-          funcPoint: 2315,
-          scale: 3217.85,
-          adjustedFactor: 1.21,
-          workload: 156.86,
+          funcPoint: 730,
+          scale: 1014.7,
+          adjustedFactor: 1.0,
+          workload: 40.88,
           city: '北京',
-          cost: 524,
+          cost: 132.22,
         },
       ]);
     });

@@ -15,19 +15,19 @@ setupMock({
     // get doc meta
     Mock.mock(new RegExp('/api/docmeta'), () => {
       return successResponseWrap({
-        elfNum: 15,
-        ilfNum: 62,
-        functionPoints: 2395,
-        adjustedScale: 3329,
+        elfNum: 2,
+        ilfNum: 20,
+        functionPoints: 730,
+        adjustedScale: 1014.7,
         phase: 1,
-        serviceFactor: 1.1,
-        fieldFactor: 1,
-        integrityLevelFactor: 1.1,
-        qualityFactor: 1,
-        devFactor: 1,
+        serviceFactor: 1.0,
+        fieldFactor: 1.0,
+        integrityLevelFactor: 1.0,
+        qualityFactor: 1.0,
+        devFactor: 1.0,
         devCity: '北京',
-        ajustmentFactor: 1.21,
-        ajustedWorkload: 0,
+        ajustmentFactor: 1.0,
+        ajustedWorkload: 40.88,
       });
     });
     // estimate
@@ -35,15 +35,15 @@ setupMock({
       return successResponseWrap([
         {
           id: 0,
-          name: '"互联网+监管"系统数据中心建设',
+          name: '现场演示功能点案例',
           docUrl: 'https://www.example.com',
           dataFile: 'https://www.example.com',
-          funcPoint: 2315,
-          scale: 3217.85,
-          adjustedFactor: 1.21,
-          workload: 156.86,
+          funcPoint: 730,
+          scale: 1014.7,
+          adjustedFactor: 1.0,
+          workload: 40.88,
           city: '北京',
-          cost: 524,
+          cost: 132.22,
         },
       ]);
     });

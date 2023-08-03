@@ -152,19 +152,20 @@
   };
 
   const metaData = ref<DocMetaData>({
-    elfNum: 19,
-    ilfNum: 58,
-    serviceFactor: 1.1,
+    elfNum: 2,
+    ilfNum: 20,
+    functionPoints: 730,
+    adjustedScale: 1014.7,
+    phase: 1,
+    serviceFactor: 1.0,
     fieldFactor: 1.0,
-    integrityLevelFactor: 1.1,
+    integrityLevelFactor: 1.0,
     qualityFactor: 1.0,
     devFactor: 1.0,
     devCity: '北京',
-    functionPoints: 2315,
-    adjustedScale: 3217.85,
-    ajustmentFactor: 1.21,
-    ajustedWorkload: 156.86,
-    money: 524,
+    ajustmentFactor: 1.0,
+    ajustedWorkload: 40.88,
+    money: 132.22,
   } as DocMetaData);
   // 软件调整因素
   const ajustmentFactor = computed(() => {
