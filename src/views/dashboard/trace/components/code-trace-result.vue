@@ -56,7 +56,6 @@
           { name: '文本相似度', max: 100 },
           { name: '控制流分析', max: 100 },
           { name: '程序依赖图', max: 100 },
-          { name: '抽象语法树', max: 100 },
           { name: '总评估相似度', max: 100 },
         ],
         axisName: {
@@ -86,7 +85,7 @@
           },
           data: [
             {
-              value: [47.81, 64.71, 67.42, 43.21, 73.62],
+              value: [47.81, 64.71, 67.42, 73.62],
               name: '项目一',
               symbol: 'none',
               itemStyle: {
@@ -94,7 +93,7 @@
               },
             },
             {
-              value: [43.52, 60.67, 43.21, 42.17, 68.91],
+              value: [43.52, 60.67, 64.93, 68.91],
               name: '项目二',
               symbol: 'none',
               itemStyle: {
@@ -102,7 +101,7 @@
               },
             },
             {
-              value: [47.93, 61.72, 42.93, 67.33],
+              value: [47.93, 61.72, 60.94, 67.33],
               name: '项目三',
               symbol: 'none',
               itemStyle: {
@@ -142,10 +141,6 @@
       {
         title: t('traceHistory.table.column.depdGraph'),
         dataIndex: 'depdGraph',
-      },
-      {
-        title: t('traceHistory.table.column.ast'),
-        dataIndex: 'ast',
       },
       {
         title: t('traceHistory.table.column.similarity'),

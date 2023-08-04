@@ -86,10 +86,6 @@
         dataIndex: 'depdGraph',
       },
       {
-        title: t('traceHistory.table.column.ast'),
-        dataIndex: 'ast',
-      },
-      {
         title: t('traceHistory.table.column.similarity'),
         dataIndex: 'similarity',
       },

@@ -8,7 +8,7 @@
         </template>
         <a-form ref="formRef" layout="vertical" :model="metaData">
           <a-row :gutter="80">
-            <a-col :span="6">
+            <a-col :span="8">
               <a-form-item
                 :label="$t('trace.metadata.applicationField')"
                 field="metaData.applicationField"
@@ -26,49 +26,8 @@
                 </a-select>
               </a-form-item>
             </a-col>
-            <!-- 文本相似度权重 -->
-            <a-col :span="6">
-              <a-form-item
-                :label="$t('trace.metadata.similarityWeight')"
-                field="metaData.similarityWeight"
-              >
-                <a-input-number v-model="metaData.similarityWeight">
-                </a-input-number>
-              </a-form-item>
-            </a-col>
-            <!-- 控制流分析相似度权重 -->
-            <a-col :span="6">
-              <a-form-item
-                :label="$t('trace.metadata.controlFlowWeight')"
-                field="metaData.controlFlowWeight"
-              >
-                <a-input-number v-model="metaData.controlFlowWeight">
-                </a-input-number>
-              </a-form-item>
-            </a-col>
-            <!-- 依赖图分析权重 -->
-            <a-col :span="6">
-              <a-form-item
-                :label="$t('trace.metadata.depdGraphWeight')"
-                field="metaData.depdGraphWeight"
-              >
-                <a-input-number v-model="metaData.depdGraphWeight">
-                </a-input-number>
-              </a-form-item>
-            </a-col>
-          </a-row>
-          <a-row :gutter="80">
-            <!-- 抽象语法树分析相似度权重 -->
-            <a-col :span="6">
-              <a-form-item
-                :label="$t('trace.metadata.astWeight')"
-                field="metaData.astWeight"
-              >
-                <a-input-number v-model="metaData.astWeight"> </a-input-number>
-              </a-form-item>
-            </a-col>
             <!-- 可接受相似度阈值 -->
-            <a-col :span="6">
+            <a-col :span="8">
               <a-form-item
                 :label="$t('trace.metadata.similarityThreshold')"
                 field="metaData.similarityThreshold"
@@ -78,7 +37,7 @@
               </a-form-item>
             </a-col>
             <!-- 项目成本 -->
-            <a-col :span="6">
+            <a-col :span="8">
               <a-form-item
                 :label="$t('trace.metadata.projectCost')"
                 field="metaData.projectCost"
@@ -87,6 +46,45 @@
                 </a-input-number>
               </a-form-item>
             </a-col>
+            <!-- 文本相似度权重 -->
+            <!-- <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.similarityWeight')"
+                field="metaData.similarityWeight"
+              >
+                <a-input-number v-model="metaData.similarityWeight">
+                </a-input-number>
+              </a-form-item>
+            </a-col> -->
+            <!-- 控制流分析相似度权重 -->
+            <!-- <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.controlFlowWeight')"
+                field="metaData.controlFlowWeight"
+              >
+                <a-input-number v-model="metaData.controlFlowWeight">
+                </a-input-number>
+              </a-form-item>
+            </a-col> -->
+            <!-- 依赖图分析权重 -->
+            <!-- <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.depdGraphWeight')"
+                field="metaData.depdGraphWeight"
+              >
+                <a-input-number v-model="metaData.depdGraphWeight">
+                </a-input-number>
+              </a-form-item>
+            </a-col> -->
+            <!-- 抽象语法树分析相似度权重 -->
+            <!-- <a-col :span="6">
+              <a-form-item
+                :label="$t('trace.metadata.astWeight')"
+                field="metaData.astWeight"
+              >
+                <a-input-number v-model="metaData.astWeight"> </a-input-number>
+              </a-form-item>
+            </a-col> -->
           </a-row>
         </a-form>
       </a-card>
